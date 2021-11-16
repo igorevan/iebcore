@@ -1,0 +1,13 @@
+{
+  "name": "fhir.ieb.core",
+  "version": "0.1.2",
+  "description": "Implementação do protocolo HL7 FHIR nos projetos do Instituto de Engenharia Biomédica (IEB) na Universidade Federal de Santa Catarina (UFSC)",
+  "author": "igoroliveiravieira",
+  "fhirVersions": [
+    "4.0.1"
+  ],
+  "dependencies": {
+    "hl7.fhir.uv.ips": "1.0.0",
+    "hl7.fhir.r4.core": "4.0.1"
+  }
+}

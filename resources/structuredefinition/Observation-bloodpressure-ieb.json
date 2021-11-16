@@ -1,0 +1,430 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Observation-bloodpressure-ieb",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-21T19:43:50.853+00:00",
+    "source": "#2uMcyTuOybJQ0wGp"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> ObservationBloodPressureIEB</p>\n    <p><strong>Title:</strong> Observation Blood Pressure (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/Observation-bloodpressure-ieb</p>\n    <p><strong>Publisher:</strong> Health Level Seven International (Orders and Observations Workgroup)</p>\n</div></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-summary",
+      "valueMarkdown": "#### Complete Summary of the Mandatory Requirements\r\r1.  One code in `Observation.code` which must have\r    -   a fixed `Observation.code.coding.system`=**'http ://loinc.org'**\r    -   a fixed  `Observation.code.coding.code`= **85354-9'**\r    -   Other additional Codings are allowed in `Observation.code`- e.g. more specific LOINC\r        Codes, SNOMED CT concepts, system specific codes. All codes\r        SHALL have an system value\r2.  One  `Observation.component.code`  which must have\r    -   a fixed `Observation.component.code.coding.system`=**'http://loinc.org'**\r    -   fixed  `Observation.component.code.coding.code`= **'8480-6'**\r    -   Other additional Codings are allowed in `Observation.code`- e.g. more specific LOINC\r        Codes, SNOMED CT concepts, system specific codes. All codes\r        SHALL have an system value\r3.  One  `Observation.component.code` which must have \r    -   a fixed `Observation.component.code.coding.system`=**'http://loinc.org'**\r    -   fixed  `Observation.component.code.coding.code`= **'8462-4'**\r    -   Other additional Codings are allowed in `Observation.code`- e.g. more specific LOINC\r        Codes, SNOMED CT concepts, system specific codes. All codes\r        SHALL have an system value\r1. Either one Observation.valueQuantity or, if there is no value, one code in Observation.DataAbsentReason\r   - Each Observation.valueQuantity must have:\r     - One numeric value in Observation.valueQuantity.value\r     - a fixed Observation.valueQuantity.system=\"http://unitsofmeasure.org\"\r     - a UCUM unit code in Observation.valueQuantity.code = **'mm[Hg]'**"
+    }
+  ],
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Observation-bloodpressure-ieb",
+  "version": "1.0.0",
+  "name": "ObservationBloodPressureIEB",
+  "title": "Observation Blood Pressure (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International (Orders and Observations Workgroup)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/orders/index.cfm Orders and Observations"
+        }
+      ]
+    }
+  ],
+  "description": "FHIR Blood Pressure Profile",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/vitalsigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FHIR Blood Pressure Profile",
+        "definition": "This profile defines  how to represent Blood Pressure observations in FHIR using a standard LOINC code and UCUM units of measure.  This is a grouping structure. It has no value in Observation.valueQuantity but contains at least one component (systolic and/or diastolic).",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "short": "Blood Pressure",
+        "definition": "Blood Pressure.",
+        "comment": "additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.",
+        "alias": [
+          "Test",
+          "Name"
+        ]
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            },
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.code.coding:BPCode",
+        "path": "Observation.code.coding",
+        "sliceName": "BPCode",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.code.coding:BPCode.system",
+        "path": "Observation.code.coding.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://loinc.org"
+      },
+      {
+        "id": "Observation.code.coding:BPCode.code",
+        "path": "Observation.code.coding.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "85354-9"
+      },
+      {
+        "id": "Observation.valueQuantity",
+        "path": "Observation.valueQuantity",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code.coding.code"
+            },
+            {
+              "type": "value",
+              "path": "code.coding.system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 2,
+        "max": "*"
+      },
+      {
+        "id": "Observation.component:SystolicBP",
+        "path": "Observation.component",
+        "sliceName": "SystolicBP",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:SystolicBP.code",
+        "path": "Observation.component.code",
+        "comment": "additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.",
+        "alias": [
+          "Component Test",
+          "Component Name"
+        ]
+      },
+      {
+        "id": "Observation.component:SystolicBP.code.coding",
+        "path": "Observation.component.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            },
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Systolic Blood Pressure",
+        "definition": "Systolic Blood Pressure."
+      },
+      {
+        "id": "Observation.component:SystolicBP.code.coding:SBPCode",
+        "path": "Observation.component.code.coding",
+        "sliceName": "SBPCode",
+        "short": "Systolic Blood Pressure",
+        "definition": "Systolic Blood Pressure.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:SystolicBP.code.coding:SBPCode.system",
+        "path": "Observation.component.code.coding.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://loinc.org"
+      },
+      {
+        "id": "Observation.component:SystolicBP.code.coding:SBPCode.code",
+        "path": "Observation.component.code.coding.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "8480-6"
+      },
+      {
+        "id": "Observation.component:SystolicBP.valueQuantity",
+        "path": "Observation.component.valueQuantity",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:SystolicBP.valueQuantity.value",
+        "path": "Observation.component.valueQuantity.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:SystolicBP.valueQuantity.unit",
+        "path": "Observation.component.valueQuantity.unit",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:SystolicBP.valueQuantity.system",
+        "path": "Observation.component.valueQuantity.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://unitsofmeasure.org",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:SystolicBP.valueQuantity.code",
+        "path": "Observation.component.valueQuantity.code",
+        "short": "Coded responses from the common UCUM units for vital signs value set.",
+        "definition": "Coded responses from the common UCUM units for vital signs value set.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "mm[Hg]",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:DiastolicBP",
+        "path": "Observation.component",
+        "sliceName": "DiastolicBP",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:DiastolicBP.code",
+        "path": "Observation.component.code",
+        "comment": "additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system."
+      },
+      {
+        "id": "Observation.component:DiastolicBP.code.coding",
+        "path": "Observation.component.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            },
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Diastolic Blood Pressure",
+        "definition": "Diastolic Blood Pressure."
+      },
+      {
+        "id": "Observation.component:DiastolicBP.code.coding:DBPCode",
+        "path": "Observation.component.code.coding",
+        "sliceName": "DBPCode",
+        "short": "Diastolic Blood Pressure",
+        "definition": "Diastolic Blood Pressure.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:DiastolicBP.code.coding:DBPCode.system",
+        "path": "Observation.component.code.coding.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://loinc.org"
+      },
+      {
+        "id": "Observation.component:DiastolicBP.code.coding:DBPCode.code",
+        "path": "Observation.component.code.coding.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "8462-4"
+      },
+      {
+        "id": "Observation.component:DiastolicBP.valueQuantity",
+        "path": "Observation.component.valueQuantity",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:DiastolicBP.valueQuantity.value",
+        "path": "Observation.component.valueQuantity.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:DiastolicBP.valueQuantity.unit",
+        "path": "Observation.component.valueQuantity.unit",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:DiastolicBP.valueQuantity.system",
+        "path": "Observation.component.valueQuantity.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://unitsofmeasure.org",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:DiastolicBP.valueQuantity.code",
+        "path": "Observation.component.valueQuantity.code",
+        "short": "Coded responses from the common UCUM units for vital signs value set.",
+        "definition": "Coded responses from the common UCUM units for vital signs value set.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "mm[Hg]",
+        "mustSupport": true
+      }
+    ]
+  }
+}

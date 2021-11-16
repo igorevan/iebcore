@@ -1,0 +1,57 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "terminologia-anvisa-ieb",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-06-07T22:04:03.446+00:00",
+    "source": "#0mBoI5XNwUVGuGEW"
+  },
+  "url": "http://gov.br/anvisa/",
+  "version": "1.0.0",
+  "name": "CodeSystemTerminologiaAnvisaIEB",
+  "title": "Terminologia da ANVISA (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-06-07",
+  "publisher": "Instituto de Engenharia Biomédica - IEB/UFSC",
+  "caseSensitive": true,
+  "valueSet": "http://gov.br/anvisa/",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "I",
+      "display": "Classe de Risco I",
+      "definition": "Classe de Risco I do Produto Médico"
+    },
+    {
+      "code": "II",
+      "display": "Classe de Risco II",
+      "definition": "Classe de Risco II do Produto Médico"
+    },
+    {
+      "code": "III",
+      "display": "Classe de Risco III",
+      "definition": "Classe de Risco III do Produto Médico"
+    },
+    {
+      "code": "IV",
+      "display": "Classe de Risco IV",
+      "definition": "Classe de Risco IV do Produto Médico"
+    },
+    {
+      "code": "nao informado",
+      "display": "Não Informado",
+      "definition": "Classe de Risco do Produto Médico Não Informado"
+    },
+    {
+      "code": "queixa tecnica",
+      "display": "Queixa Técnica",
+      "definition": "Notificação do Tipo Queixa Técnica"
+    },
+    {
+      "code": "evento adverso",
+      "display": "Evento Adverso",
+      "definition": "Notificação do Tipo Evento Adverso"
+    }
+  ]
+}

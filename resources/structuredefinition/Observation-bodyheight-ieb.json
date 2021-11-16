@@ -1,0 +1,214 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Observation-bodyheight-ieb",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2021-05-21T19:45:24.437+00:00",
+    "source": "#u4oYrTTH9Y0J8bo4"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> observation-bodyheight</p>\n    <p><strong>Title:</strong> Observation Body Height Profile</p>\n    <p><strong>Status:</strong> Draft</p>\n    <p><strong>URL:</strong> http://hl7.org/fhir/StructureDefinition/bodyheight</p>\n    <p><strong>Publisher:</strong> Health Level Seven International (Orders and Observations Workgroup)</p>\n</div></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-summary",
+      "valueMarkdown": "#### Complete Summary of the Mandatory Requirements\r\r1.  One code in `Observation.code` which must have\r    -   a fixed `Observation.code.coding.system`=**'http ://loinc.org'**\r    -   a fixed  `Observation.code.coding.code`= **'8302-2'**\r    -   8306-3 -Body height - lying (i.e., body length - typically used for infants) MAY be included as an additional observation code  - Other additional Codings are allowed in `Observation.code`- e.g. more specific LOINC\r        Codes, SNOMED CT concepts, system specific codes. All codes\r        SHALL have an system value\r1. Either one Observation.valueQuantity or, if there is no value, one code in Observation.DataAbsentReason\r   - Each Observation.valueQuantity must have:\r     - One numeric value in Observation.valueQuantity.value\r     - a fixed Observation.valueQuantity.system=\"http://unitsofmeasure.org\"\r     - a UCUM unit code in Observation.valueQuantity.code = **'cm', or '[in_i]'**"
+    }
+  ],
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Observation-bodyheight-ieb",
+  "version": "1.0.0",
+  "name": "ObservationBodyHeightIEB",
+  "title": "Observation Body Height (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International (Orders and Observations Workgroup)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/orders/index.cfm Orders and Observations"
+        }
+      ]
+    }
+  ],
+  "description": "FHIR Body Height Profile",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/vitalsigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FHIR Body Height Profile",
+        "definition": "This profile defines  how to represent Body Height observations in FHIR using a standard LOINC code and UCUM units of measure.",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "short": "Body Height",
+        "definition": "Body Height.",
+        "comment": "additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.",
+        "alias": [
+          "Test",
+          "Name"
+        ]
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            },
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.code.coding:BodyHeightCode",
+        "path": "Observation.code.coding",
+        "sliceName": "BodyHeightCode",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.code.coding:BodyHeightCode.system",
+        "path": "Observation.code.coding.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://loinc.org"
+      },
+      {
+        "id": "Observation.code.coding:BodyHeightCode.code",
+        "path": "Observation.code.coding.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "8302-2"
+      },
+      {
+        "id": "Observation.valueQuantity",
+        "path": "Observation.valueQuantity"
+      },
+      {
+        "id": "Observation.valueQuantity.value",
+        "path": "Observation.valueQuantity.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.unit",
+        "path": "Observation.valueQuantity.unit",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.system",
+        "path": "Observation.valueQuantity.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://unitsofmeasure.org",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.code",
+        "path": "Observation.valueQuantity.code",
+        "short": "Coded responses from the common UCUM units for vital signs value set.",
+        "definition": "Coded responses from the common UCUM units for vital signs value set.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "BodyLengthUnits"
+            }
+          ],
+          "strength": "required",
+          "description": "Common UCUM units for body length measures such as Body Height and Head Circumference.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/ucum-bodylength|4.0.1"
+        }
+      }
+    ]
+  }
+}

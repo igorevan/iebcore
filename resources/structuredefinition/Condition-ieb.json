@@ -1,0 +1,348 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Condition-ieb",
+  "meta": {
+    "versionId": "12",
+    "lastUpdated": "2021-05-21T19:39:32.140+00:00",
+    "source": "#xQQWbHwrqkMq7Cbn"
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> ConditionIEB</p>\n    <p><strong>Title:</strong> Condition (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/Condition-ieb</p>\n    <p><strong>Publisher:</strong> Health Level Seven International - Patient Care Work Group</p><table><thead><tr><th/><th/><th/><th/></tr></thead><tbody>\n    </tbody>\n</table>\n</div></div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Condition-ieb",
+  "version": "1.0.0",
+  "name": "ConditionIEB",
+  "title": "Condition (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International - Patient Care Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/patientcare"
+        }
+      ]
+    }
+  ],
+  "description": "This profile represents the constraints applied to the Condition resource by the International Patient Summary (IPS) FHIR Implementation Guide. A record of a problem is represented in the patient summary as an instance of the Condition resource constrained by this profile.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001"
+        }
+      ]
+    }
+  ],
+  "purpose": "Representation of a problem in the international patient summary",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "Documentation of a health problem of the patient",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.clinicalStatus",
+        "path": "Condition.clinicalStatus",
+        "min": 1,
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.verificationStatus",
+        "path": "Condition.verificationStatus",
+        "comment": "This element is labeled as a modifier because the status contains the code refuted and entered-in-error that mark the Condition as not currently valid.",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "definition": "A category assigned to the condition. In this profile, a health problem of the patient, therefore a 'problem-list-item'.\r\n",
+        "comment": "In this profile, Condition represents a health problem of the patient. Therefore one of the category value(s) must be problem-list-item.",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/problem-type-uv-ips"
+        }
+      },
+      {
+        "id": "Condition.severity",
+        "path": "Condition.severity",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "ConditionSeverity"
+            }
+          ],
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/condition-severity-uv-ips"
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "pattern",
+              "path": "$this"
+            }
+          ],
+          "description": "Discriminated by the bound value set",
+          "rules": "open"
+        },
+        "definition": "Identification of the condition, problem or diagnosis or recording of \"problem absent\" or of \"problems unknown\".",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.code:problemGPSCode",
+        "path": "Condition.code",
+        "sliceName": "problemGPSCode",
+        "short": "Code for a problem from the SNOMED CT GPS code set",
+        "definition": "Code for a clinical problem that is selected from the SNOMED CT GPS code set.",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "problemGPSCode"
+            }
+          ],
+          "strength": "required",
+          "description": "problemGPS",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/core-problem-finding-situation-event-gps-uv-ips"
+        }
+      },
+      {
+        "id": "Condition.code:absentOrUnknownProblem",
+        "path": "Condition.code",
+        "sliceName": "absentOrUnknownProblem",
+        "short": "Code for absent problem or for unknown problem",
+        "definition": "Code representing the statement \"absent problem\" or the statement \"problems unknown\"",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "absentOrUnknownProblem"
+            }
+          ],
+          "strength": "required",
+          "description": "Absent problem or unknown problem",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-problems-uv-ips"
+        }
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "BodySite"
+            }
+          ],
+          "strength": "example",
+          "valueSet": "http://hl7.org/fhir/ValueSet/body-site"
+        }
+      },
+      {
+        "id": "Condition.subject",
+        "path": "Condition.subject",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.subject.reference",
+        "path": "Condition.subject.reference",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.onsetDateTime:onsetDateTime",
+        "path": "Condition.onsetDateTime",
+        "sliceName": "onsetDateTime",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.onsetPeriod:onsetPeriod",
+        "path": "Condition.onsetPeriod",
+        "sliceName": "onsetPeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ],
+        "mustSupport": false
+      },
+      {
+        "id": "Condition.abatement[x]",
+        "path": "Condition.abatement[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.abatement[x]:abatementDateTime",
+        "path": "Condition.abatement[x]",
+        "sliceName": "abatementDateTime",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.abatement[x]:abatementPeriod",
+        "path": "Condition.abatement[x]",
+        "sliceName": "abatementPeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ],
+        "mustSupport": false
+      },
+      {
+        "id": "Condition.asserter",
+        "path": "Condition.asserter",
+        "definition": "Individual who is making the condition statement.\r\nInformation source.",
+        "mustSupport": true
+      }
+    ]
+  }
+}

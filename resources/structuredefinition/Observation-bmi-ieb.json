@@ -1,0 +1,206 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Observation-bmi-ieb",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-21T19:44:40.213+00:00",
+    "source": "#LjlbRyc3Sttqj4Q0"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> ObservationBmiIEB</p>\n    <p><strong>Title:</strong> Observation Body Mass Index (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/Observation-bmi-ieb</p>\n    <p><strong>Publisher:</strong> Health Level Seven International (Orders and Observations Workgroup)</p>\n</div></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-summary",
+      "valueMarkdown": "#### Complete Summary of the Mandatory Requirements\r\r1.  One code in `Observation.code` which must have\r    -   a fixed `Observation.code.coding.system`=**'http ://loinc.org'**\r    -   a fixed  `Observation.code.coding.code`= **'39156-5'**\r    -   Other additional Codings are allowed in `Observation.code`- e.g. more specific LOINC\r        Codes, SNOMED CT concepts, system specific codes. All codes\r        SHALL have an system value\r1. Either one Observation.valueQuantity or, if there is no value, one code in Observation.DataAbsentReason\r   - Each Observation.valueQuantity must have:\r     - One numeric value in Observation.valueQuantity.value\r     - a fixed Observation.valueQuantity.system=\"http://unitsofmeasure.org\"\r     - a UCUM unit code in Observation.valueQuantity.code = **'kg/m2'**"
+    }
+  ],
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Observation-bmi-ieb",
+  "version": "1.0.0",
+  "name": "ObservationBmiIEB",
+  "title": "Observation Body Mass Index (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International (Orders and Observations Workgroup)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/orders/index.cfm Orders and Observations"
+        }
+      ]
+    }
+  ],
+  "description": "FHIR Body Mass Index (BMI) Profile",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/vitalsigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FHIR Body Mass Index (BMI) Profile",
+        "definition": "This profile defines  how to represent Body Mass Index (BMI) observations in FHIR using a standard LOINC code and UCUM units of measure.",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "short": "Body Mass Index (BMI)",
+        "definition": "Body Mass Index (BMI).",
+        "comment": "additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.",
+        "alias": [
+          "Test",
+          "Name"
+        ]
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            },
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.code.coding:BMICode",
+        "path": "Observation.code.coding",
+        "sliceName": "BMICode",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.code.coding:BMICode.system",
+        "path": "Observation.code.coding.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://loinc.org"
+      },
+      {
+        "id": "Observation.code.coding:BMICode.code",
+        "path": "Observation.code.coding.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "39156-5"
+      },
+      {
+        "id": "Observation.valueQuantity",
+        "path": "Observation.valueQuantity",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.valueQuantity.value",
+        "path": "Observation.valueQuantity.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "decimal"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.unit",
+        "path": "Observation.valueQuantity.unit",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.system",
+        "path": "Observation.valueQuantity.system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "fixedUri": "http://unitsofmeasure.org",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.valueQuantity.code",
+        "path": "Observation.valueQuantity.code",
+        "short": "Coded responses from the common UCUM units for vital signs value set.",
+        "definition": "Coded responses from the common UCUM units for vital signs value set.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "kg/m2",
+        "mustSupport": true
+      }
+    ]
+  }
+}

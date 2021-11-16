@@ -1,0 +1,232 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "MedicationStatement-ieb",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-21T19:42:25.601+00:00",
+    "source": "#iW95gxUr6DrnUM9r"
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> MedicationStatementIEB</p>\n    <p><strong>Title:</strong> Medication Statement (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/MedicationStatement-ieb</p>\n    <p><strong>Publisher:</strong> Health Level Seven International - Patient Care Work Group</p>\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/MedicationStatement-ieb",
+  "version": "1.0.0",
+  "name": "MedicationStatementIEB",
+  "title": "Medication Statement (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International - Patient Care Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/patientcare"
+        }
+      ]
+    }
+  ],
+  "description": "This profile represents the constraints applied to the MedicationStatement resource by the International Patient Summary (IPS) FHIR Implementation Guide, based on FHIR R4. A record of a medication statement is represented in the patient summary as an instance of a MedicationStatement resource constrained by this profile.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001"
+        }
+      ]
+    }
+  ],
+  "purpose": "This profile constrains the representation of a medication statement related to the patient, in the context of the international patient summary as specified by the IPS project of HL7 International.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "MedicationStatement",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "MedicationStatement",
+        "path": "MedicationStatement",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.status",
+        "path": "MedicationStatement.status",
+        "comment": "In the scope of the IPS the entered-in-error concept is not allowed.",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.medication[x]",
+        "path": "MedicationStatement.medication[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed"
+        },
+        "definition": "Identifies the medication being administered or the reason for absent or unknown Medication. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code. To improve global interoperability is strongly encouraged that the reference to a medication resource is used, limiting the usage of the medicationCodeableConcept only to the cases in which no other information than a simple code is available.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "example",
+          "description": "The type of medication",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/medication-example-uv-ips"
+        }
+      },
+      {
+        "id": "MedicationStatement.medication[x]:medicationReference",
+        "path": "MedicationStatement.medication[x]",
+        "sliceName": "medicationReference",
+        "definition": "Identifies the medication being administered or the reason for absent or unknown Medication. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code. To improve global interoperability is strongly encouraged that the reference to a medication resource is used, limiting the usage of the medicationCodeableConcept only to the cases in which no other information than a simple code is available.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/Medication-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.medication[x]:medicationCodeableConcept",
+        "path": "MedicationStatement.medication[x]",
+        "sliceName": "medicationCodeableConcept",
+        "short": "Code for absent or unknown medication",
+        "definition": "Code for a negated/excluded medication statement.  This describes a categorical negated statement (e.g., \"No known medications\").",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "UnknownMedicationCode"
+            }
+          ],
+          "strength": "extensible",
+          "description": "Representation of unknown or absent medications",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-medications-uv-ips"
+        }
+      },
+      {
+        "id": "MedicationStatement.subject",
+        "path": "MedicationStatement.subject",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.subject.reference",
+        "path": "MedicationStatement.subject.reference",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.effective[x]",
+        "path": "MedicationStatement.effective[x]",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.effective[x].extension",
+        "path": "MedicationStatement.effective[x].extension",
+        "short": "effective[x] absence reason",
+        "definition": "Provides a reason why the effectiveTime is missing.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.informationSource",
+        "path": "MedicationStatement.informationSource",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.dosage",
+        "path": "MedicationStatement.dosage",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.dosage.text",
+        "path": "MedicationStatement.dosage.text",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.dosage.timing",
+        "path": "MedicationStatement.dosage.timing",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.dosage.route",
+        "path": "MedicationStatement.dosage.route",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "preferred",
+          "description": "EDQM Standards Terms",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/medicine-route-of-administration"
+        }
+      }
+    ]
+  }
+}

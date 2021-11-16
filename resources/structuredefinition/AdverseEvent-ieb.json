@@ -1,0 +1,78 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "AdverseEvent-ieb",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2021-06-07T20:44:41.825+00:00",
+    "source": "#afy14E3TGtV6iWlT"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> AdverseEventIEB</p>\n    <p><strong>Title:</strong> Adverse Event (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/AdverseEvent-ieb</p>\n    <p><strong>Publisher:</strong> Instituto de Engenharia Biomédica - IEB/UFSC</p>\n\n\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/AdverseEvent-ieb",
+  "version": "1.0.0",
+  "name": "AdverseEventIEB",
+  "title": "Adverse Event (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-06-07",
+  "publisher": "Instituto de Engenharia Biomédica - IEB/UFSC",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "AdverseEvent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/AdverseEvent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "AdverseEvent",
+        "path": "AdverseEvent"
+      },
+      {
+        "id": "AdverseEvent.actuality",
+        "path": "AdverseEvent.actuality",
+        "binding": {
+          "strength": "required",
+          "description": "Tipo de Notificação",
+          "valueSet": "http://www.ieb.ufsc.br/fhir/ValueSet/tipo-notificacao-equipamento-medico-ieb"
+        }
+      },
+      {
+        "id": "AdverseEvent.category",
+        "path": "AdverseEvent.category",
+        "slicing": {
+          "rules": "open"
+        }
+      },
+      {
+        "id": "AdverseEvent.category:classeRisco",
+        "path": "AdverseEvent.category",
+        "sliceName": "classeRisco",
+        "binding": {
+          "strength": "required",
+          "description": "Classe de Risco do Produto Médico",
+          "valueSet": "http://www.ieb.ufsc.br/fhir/ValueSet/classe-risco-produto-medico-ieb"
+        }
+      },
+      {
+        "id": "AdverseEvent.contributor",
+        "path": "AdverseEvent.contributor",
+        "slicing": {
+          "rules": "open"
+        }
+      },
+      {
+        "id": "AdverseEvent.contributor:nomeTecnico",
+        "path": "AdverseEvent.contributor",
+        "sliceName": "nomeTecnico",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

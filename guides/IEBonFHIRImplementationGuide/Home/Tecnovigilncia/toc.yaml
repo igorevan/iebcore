@@ -1,0 +1,12 @@
+- name: AdverseEvent
+  filename: AdverseEvent.guide.md
+- name: Condition
+  filename: Condition.guide.md
+- name: Encounter
+  filename: Encounter.guide.md
+- name: Device
+  filename: Device.guide.md
+- name: ResearchStudy
+  filename: ResearchStudy.guide.md
+- name: Procedure
+  filename: Procedure.guide.md

@@ -1,0 +1,50 @@
+{
+  "resourceType": "ValueSet",
+  "id": "classe-risco-produto-medico-ieb",
+  "meta": {
+    "versionId": "9",
+    "lastUpdated": "2021-06-06T15:24:11.387+00:00",
+    "source": "#is95BPEyjvRmb8UH"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> ClasseRiscoProdutoMedicoIEB</p>\n    <p><strong>Title:</strong> Classe de Risco do Produto Médico (IEB)</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/ValueSet/classe-risco-produto-medico-ieb</p>\n    <p><strong>Version:</strong> 1.0.0</p>\n    <p><strong>Status:</strong> active</p>\n\n\n\n\n\n\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/ValueSet/classe-risco-produto-medico-ieb",
+  "version": "1.0.0",
+  "name": "ClasseRiscoProdutoMedicoIEB",
+  "title": "Classe de Risco do Produto Médico (IEB)",
+  "status": "active",
+  "compose": {
+    "lockedDate": "2021-06-03",
+    "inactive": false,
+    "include": [
+      {
+        "system": "http://gov.br/anvisa/",
+        "version": "1.0.0",
+        "concept": [
+          {
+            "code": "I",
+            "display": "Classe de Risco I"
+          },
+          {
+            "code": "II",
+            "display": "Classe de Risco II"
+          },
+          {
+            "code": "III",
+            "display": "Classe de Risco III"
+          },
+          {
+            "code": "IV",
+            "display": "Classe de Risco IV"
+          },
+          {
+            "code": "nao informado",
+            "display": "Não Informado"
+          }
+        ]
+      }
+    ]
+  }
+}

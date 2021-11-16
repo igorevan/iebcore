@@ -1,0 +1,12 @@
+- name: Index
+  filename: Index.guide.md
+- name: Table of Contents
+  filename: TableofContents.guide.md
+- name: Guidance
+  filename: Guidance.guide.md
+- name: SDC-X
+  filename: SDC-X
+- name: Tecnovigilância
+  filename: Tecnovigilncia
+- name: Examples
+  filename: Examples.guide.md

@@ -1,0 +1,38 @@
+{
+  "resourceType": "ValueSet",
+  "id": "tipo-notificacao-equipamento-medico-ieb",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2021-06-06T15:25:53.503+00:00",
+    "source": "#gEU83EYzvprVmfN7"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> TipoNotificacaoEquipamentoMedicoIEB</p>\n    <p><strong>Title:</strong> Tipo de Notificação do Equipamento Médico (IEB)</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/ValueSet/tipo-notificacao-equipamento-medico</p>\n    <p><strong>Version:</strong> 1.0.0</p>\n    <p><strong>Status:</strong> active</p>\n\n\n\n\n\n\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/ValueSet/tipo-notificacao-equipamento-medico-ieb",
+  "version": "1.0.0",
+  "name": "TipoNotificacaoEquipamentoMedicoIEB",
+  "title": "Tipo de Notificação do Equipamento Médico (IEB)",
+  "status": "active",
+  "compose": {
+    "lockedDate": "2021-06-03",
+    "inactive": false,
+    "include": [
+      {
+        "system": "http://gov.br/anvisa/",
+        "version": "1.0.0",
+        "concept": [
+          {
+            "code": "queixa tecnica",
+            "display": "Queixa Técnica"
+          },
+          {
+            "code": "evento adverso",
+            "display": "Evento Adverso"
+          }
+        ]
+      }
+    ]
+  }
+}

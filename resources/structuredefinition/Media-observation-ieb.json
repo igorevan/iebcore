@@ -1,0 +1,156 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Media-observation-ieb",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2021-05-21T19:41:18.118+00:00",
+    "source": "#5GHsNVqMWfCYHblm"
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> MediaObservationIEB</p>\n    <p><strong>Title:</strong> Media Observation (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/Media-observation-uv-ips</p>\n    <p><strong>Publisher:</strong> Health Level Seven International - Patient Care Work Group</p>\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Media-observation-uv-ips",
+  "version": "1.0.0",
+  "name": "MediaObservationIEB",
+  "title": "Media Observation (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Health Level Seven International - Patient Care Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/patientcare"
+        }
+      ]
+    }
+  ],
+  "description": "This profile constrains the Media resource (which is a specialized observation).",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001"
+        }
+      ]
+    }
+  ],
+  "purpose": "This specialized observation is used to convey illustrative media content.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "dicom",
+      "uri": "http://nema.org/dicom",
+      "name": "DICOM Tag Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Media",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Media",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Media",
+        "path": "Media",
+        "mustSupport": true
+      },
+      {
+        "id": "Media.status",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint",
+            "valueString": "default: final"
+          }
+        ],
+        "path": "Media.status",
+        "definition": "The status of the result value. Only final observation are eligible to the international patient summary.",
+        "fixedCode": "completed",
+        "mustSupport": true
+      },
+      {
+        "id": "Media.type",
+        "path": "Media.type",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Media.subject",
+        "path": "Media.subject",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Media.subject.reference",
+        "path": "Media.subject.reference",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Media.operator",
+        "path": "Media.operator",
+        "mustSupport": true
+      },
+      {
+        "id": "Media.device",
+        "path": "Media.device",
+        "mustSupport": true
+      },
+      {
+        "id": "Media.content",
+        "path": "Media.content",
+        "mustSupport": true
+      }
+    ]
+  }
+}

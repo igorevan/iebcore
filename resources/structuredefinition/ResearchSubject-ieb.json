@@ -1,0 +1,35 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ResearchSubject-ieb",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-21T20:00:08.792+00:00",
+    "source": "#8EJd8G2S4vJEa03i"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> ResearchSubjectIEB</p>\n    <p><strong>Title:</strong> ResearchSubject (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/ResearchSubject-ieb</p>\n    <p><strong>Publisher:</strong> Instituto de Engenharia Biomédica - IEB/UFSC</p>\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/ResearchSubject-ieb",
+  "version": "1.0.0",
+  "name": "ResearchSubjectIEB",
+  "title": "ResearchSubject (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Instituto de Engenharia Biomédica - IEB/UFSC",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ResearchSubject",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ResearchSubject",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ResearchSubject",
+        "path": "ResearchSubject"
+      }
+    ]
+  }
+}

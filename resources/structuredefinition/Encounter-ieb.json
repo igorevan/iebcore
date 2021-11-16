@@ -1,0 +1,35 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Encounter-ieb",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-21T19:37:49.554+00:00",
+    "source": "#RczGiR5MN6hYVB6T"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Overview</h2>\n    <p><strong>Name:</strong> EncounterIEB</p>\n    <p><strong>Title:</strong> Encounter (IEB)</p>\n    <p><strong>Status:</strong> Active</p>\n    <p><strong>URL:</strong> http://www.ieb.ufsc.br/fhir/StructureDefinition/Encounter-ieb</p><table><thead><tr><th/><th/><th/><th/></tr></thead><tbody>\n    </tbody>\n</table>\n</div>"
+  },
+  "url": "http://www.ieb.ufsc.br/fhir/StructureDefinition/Encounter-ieb",
+  "version": "1.0.0",
+  "name": "EncounterIEB",
+  "title": "Encounter (IEB)",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-05-21",
+  "publisher": "Instituto de Engenharia Biomédica - IEB/UFSC",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Encounter",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Encounter",
+        "path": "Encounter"
+      }
+    ]
+  }
+}

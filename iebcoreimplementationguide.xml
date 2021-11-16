@@ -1,0 +1,14 @@
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <url value="https://simplifier.net/guide/iebcoreimplementationguide" />
+  <name value="IEB FHIR Core Implementation Guide" />
+  <status value="draft" />
+  <description value="Implementação do protocolo HL7 FHIR nos projetos desenvolvidos pelos pesquisadores do Instituto de Engenharia Biomédica (IEB) da Universidade Federal de Santa Catarina (UFSC)." />
+  <fhirVersion value="4.0.0" />
+  <definition>
+    <page>
+      <nameUrl value="Home.md" />
+      <title value="Home" />
+      <generation value="markdown" />
+    </page>
+  </definition>
+</ImplementationGuide>
